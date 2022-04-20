@@ -160,6 +160,18 @@ catkin_install_python(PROGRAMS
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+project(pcd_read)
+
+find_package(PCL 1.10 REQUIRED)
+
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
+add_executable (amiga_manipulation src/pcd_read.cpp)
+target_link_libraries (amiga_manipulation ${PCL_LIBRARIES})
+
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
 # install(TARGETS ${PROJECT_NAME}_node

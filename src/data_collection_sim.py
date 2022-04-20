@@ -1,3 +1,4 @@
+#!/usr/bin/env python3.8
 from amiga_group import AmigaMovegroup
 from geometry_msgs.msg import Pose, Vector3, TransformStamped, Quaternion
 from math import pi, cos , sin
@@ -6,8 +7,8 @@ from sensor_msgs.msg import Image, PointCloud2
 from cv_bridge.core import CvBridge
 import tf2_ros
 import rospy
-import cv2
 import os
+import cv2
 
 class DataCollectionPipeline(AmigaMovegroup):
     def __init__(self) -> None:
@@ -77,7 +78,7 @@ def callback_rgb(img):
     if flag == True:
         print("Saved")
         cv2_img = CvBridge.imgmsg_to_cv2(img)
-        directory = r'/home/yilong/git_ws/src/ur10e_robotiq/amiga_manipulation/RGB_images'
+        directory = r'/home/yilong/git_ws/src/ur10e_robotiq/amiga_manipulation/data/images'
         filename = 'savedImage{0}.jpg'.format(count)
         os.chdir(directory)
         cv2.imwrite(filename, cv2_img)
